@@ -22,6 +22,11 @@ test:
 
 production:
   <<: *default
-  database: myapp_production
-  username: myapp
+  database: d2h4g2ttqrvq07
+  username: upbkbnnwdexjxj
   password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
+  host: ec2-184-72-246-219.compute-1.amazonaws.com
+  port: 5432
+  adapter: postgresql
+  encoding: unicode
+  url: <%= ENV['DATABASE_URL'] %>
