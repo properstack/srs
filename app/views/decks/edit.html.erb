@@ -1,0 +1,119 @@
+<%= csrf_meta_tag %>
+
+<style>
+  #deck-name:hover {
+    background:#e8e8e8;
+  }
+  textarea {
+    width:100%;
+  }
+  .table-header {
+    font-weight:700;
+  }
+</style>
+
+<section class="col-md-12">
+  <h3 style="display:inline-block;"><span id="deck-name" contenteditable="true"><%= @deck.name %></span></h3>
+  <%= link_to "Delete Deck", destroy_decks_path(@deck), method: :delete, class: "btn btn-warning", style: "float:right;color:white;", data: { confirm: 'Are you sure?' } %>
+
+
+  <div class="row" style="border-bottom: 2px solid #d5d5d5;padding:12px 8px 3px;margin-top:20px;">
+    <div class="col-xs-5 table-header">
+      <span>Question</span>
+
+    </div>
+    <div class="col-xs-5 table-header">
+      <span>Answer</span>
+
+
+    </div>
+    <div class="col-xs-2 table-header text-center">
+      <span>Action</span>
+
+
+    </div>    
+  </div>
+
+
+    <% @deck.cards.each do |card| %>
+      <%= form_for(card, url: update_cards_path(card)) do |f| %>
+      <% if card.errors.any? %>
+        <% card.errors.full_messages.each do |message| %>
+          <%= message %>
+        <% end %>
+      <% end %>
+    <div class="row" style="border-top: 1px solid #d5d5d5;padding:12px 8px 3px;">
+      <div class="col-xs-5">
+        <%= f.text_area :question %>
+      </div>
+      <div class="col-xs-5">
+        <%= f.text_area :answer %>  
+      </div>
+      <div class="col-xs-2 text-center">
+          <div class="btn-group btn-group-horizontal" role="group" aria-label="...">
+
+          <%= button_tag(type: 'submit', class: "btn btn-success") do %>
+            <i  class="glyphicon glyphicon-floppy-disk"></i>
+          <% end %>        
+          <%= link_to raw('<i style="color:white;" class="glyphicon glyphicon-trash"></i>'), cards_destroy_path(card), method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
+        </div>
+      </div>
+    </div>
+      <% end %>
+    <% end %>
+
+
+    <%= form_for(@new_card) do |f| %>
+      <% if @new_card.errors.any? %>
+        <% @new_card.errors.full_messages.each do |message| %>
+          <%= message %>
+        <% end %>
+      <% end %>
+
+    <div class="row" style="border-top: 1px solid #d5d5d5;padding:12px 8px 3px;">
+      <div class="col-xs-5">
+        <%= f.text_area :question %><%= f.hidden_field :deck_id %>
+      </div>
+      <div class="col-xs-5">
+        <%= f.text_area :answer %>
+      </div>
+      <div class="col-xs-2 text-center">
+        <div class="btn-group btn-group-horizontal" role="group" aria-label="...">
+          <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+            <i  class="glyphicon glyphicon-floppy-disk"></i> Save New
+          <% end %>        
+        </div>
+      </div>
+    </div>
+    <% end %>
+
+
+
+  </div>
+
+</section>
+
+
+
+<script>
+
+
+
+$("#deck-name").blur(function(el){
+  console.log(el)
+  $.ajax({
+    url: '<%= update_decks_path(@deck) %>', 
+    data : JSON.stringify({ name: !!el.target.innerText ? el.target.innerText : "Deck Name", authenticity_token: $('meta[name=csrf-token]').attr('content') }),
+    type : 'PATCH',
+    contentType : 'application/json',
+    processData: false,
+    dataType: 'json'
+  })
+})
+
+</script>
+
+
+
+
+

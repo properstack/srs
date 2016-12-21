@@ -1,5 +1,21 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+  devise_for :users
   root 'welcomes#index'
- 
+
+
+  post "cards/" => "cards#create", as: :cards
+  delete "cards/:id/" => "cards#destroy", as: :cards_destroy
+  patch "cards/:id/" => "cards#update", as: :update_cards
+  get "cards/review" => "cards#review", as: :review_cards
+  get "cards/cheat/" => "cards#cheat", as: :cheat
+
+
+  get "decks/" => "decks#index", as: :decks
+  get "decks/:id/edit/" => "decks#edit", as: :edit_decks #should this be singular?
+  delete "decks/:id" => "decks#destroy", as: :destroy_decks
+  patch "decks/:id" => "decks#update", as: :update_decks
+  post "decks/" => "decks#create", as: nil #the name is repeated but its fine because the http verb is different, although it does not allow one to specify like this using as, it only allows one to indirectly do this, by daving the route be the same http://stackoverflow.com/questions/19189415/how-may-two-routes-with-different-http-request-types-share-the-same-name
+
 end

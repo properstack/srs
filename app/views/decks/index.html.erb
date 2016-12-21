@@ -1,0 +1,98 @@
+  <style>
+    .table-header {
+      font-weight:700;
+    }
+    .row:hover {
+      background:#f2f2f2;
+    }
+  </style>
+
+  <section class="col-md-8 col-md-offset-2">
+    <h3 class="text-center">My Decks</h3>
+   
+    <div class="row" style="border-bottom: 2px solid #d5d5d5;padding:12px 8px 3px;margin-top:20px;">
+      <div class="col-xs-3">
+        <span class="table-header">Deck</span>
+      </div>
+      <div class="col-xs-3">
+       <span class="table-header">Mastery</span>
+      </div>
+      <div class="col-xs-3">
+       <span class="table-header">Cards</span>
+      </div>
+      <div class="col-xs-3 text-center">
+        <a href="#" class="btn btn-sm btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+          <span class="glyphicon glyphicon-plus"></span>
+        </a>
+            <ul class="dropdown-menu dropdown-menu-right">
+              <li><a onclick='$(".hidden-form").slideDown("slow")' href="javascript:void(0);"><span class="glyphicon glyphicon-plus ex"></span><span class="hide-deck"> Create New Deck</span></a></li>
+<!--               <li class="divider"></li>
+              <li onclick="bulkUpload()" data-placement="bottom" data-toggle="tooltip" title="Columns: [ question | answer | deck ]">
+                <a href="javascript:void(0);"><span class="glyphicon glyphicon-open"></span> Upload CSV</a>
+              </li>
+              <li>
+                <a href=""><span class="glyphicon glyphicon-save"></span> Download CSV</a>
+              </li>
+              <li class="divider"></li> -->
+            </ul>
+      </div>
+    </div>
+
+
+
+    <div class="row hidden-form" style="border-top: 1px solid #d5d5d5;padding:12px 8px 3px;display:none;">
+
+    <%= form_for(@new_deck) do |f| %>
+    <div class="col-xs-3">
+      <%= f.text_field :name %><%= f.hidden_field :user_id %>
+    </div>
+    <div class="col-xs-3">
+     <span class="">0%</span>
+    </div>
+    <div class="col-xs-3">
+     <span class="">0</span>
+    </div>
+    <div class="col-xs-3 text-center">
+      <%= f.submit :Save, class: "btn btn-primary" %>
+    </div>
+
+    <% end %>
+
+    </div>
+
+
+    <% @decks.each do |deck| %> 
+
+
+    <div class="row" style="border-top: 1px solid #d5d5d5;padding:12px 8px 3px;">
+      <div class="col-xs-3">
+        <span class=""><%= deck.name %></span>
+      </div>
+      <div class="col-xs-3">
+       <span class="">0%</span>
+      </div>
+      <div class="col-xs-3">
+       <span class=""><%= deck.cards.count %></span>
+      </div>
+      <div class="col-xs-3 text-center">
+          <p class="btn-group" style="margin:0;">
+          <%= link_to raw('<i style="color:black;" class="glyphicon glyphicon-eye-open"></i>'), review_cards_path, style: "color:white;border-radius:3px !important;", class: "btn btn-default btn-sm btn-edges" %>
+          
+          
+          <%= link_to raw('<i class="glyphicon glyphicon-pencil"></i>'), edit_decks_path(deck), class:"btn btn-warning btn-sm btn-edges", style: "border-radius:3px !important;color:white;" %>
+        </p>
+      </div>
+    </div>
+    <% end %>
+  
+
+
+  </section>
+
+
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
+

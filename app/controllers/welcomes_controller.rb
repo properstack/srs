@@ -1,7 +1,7 @@
 class WelcomesController < ApplicationController
 
   def index
-  	render layout: false
+  	current_user ? redirect_to(decks_url) : render(layout: false)
   end
 
 end
