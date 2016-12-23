@@ -3,6 +3,13 @@ class DecksController < ApplicationController
   before_action :authenticate_user!
 
 
+  def upload
+    Deck.upload(upload_params[:file], current_user)
+    redirect_to :decks, notice: "Successfully uploaded CSV"
+  end
+
+
+
   def index
   	@decks = current_user.decks
     @new_deck = Deck.new({user_id: current_user.id})
@@ -26,13 +33,14 @@ class DecksController < ApplicationController
     authorize @deck
     respond_to do |format|
       if @deck.save
-        format.html {redirect_to :back, notice: "New deck created"}
+        format.html {redirect_to edit_decks_path(@deck), notice: "New deck created"}
       end
     end
   end
 
 
   def destroy
+    authorize @deck
   	@deck.destroy
   	respond_to do |format|
       format.html { redirect_to :decks, notice: "Succesfully deleted deck." }
@@ -42,7 +50,11 @@ class DecksController < ApplicationController
 
   private
     def deck_params
-      params.require(:deck).permit(:name, :user_id)
+      params.require(:deck).permit(:name, :user_id, :file)
+    end
+
+    def upload_params
+      params.permit(:name, :user_id, :file)
     end
     
     def set_deck

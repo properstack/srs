@@ -18,15 +18,14 @@ var CheatPage = React.createClass({
   handleChange: function(event) {  
     this.setState({value: event.target.value}, function() {
 
-      if (this.state.value!="") {
+      if (this.state.value.length > 2) {
         this.setState({cards: this.newArray(this.state.value) })
 	      this.searchClass = "form-control input-sm"
-	      this.searchStyles.marginTop = 0
 	      this.searchStyles = {margin:"0 auto",cursor: "auto",textAlign:"center",maxWidth:"300px"}
 	    } else {
 	      this.setState({cards:[]})
 	      this.searchClass = "form-control"
-	      this.searchStyles = {padding: "8px 10px", borderRadius:3, boxShadow: "rgba(0, 0, 0, 0.498039) 1px 1px 4px",margin:"0 auto",cursor: "auto",textAlign:"center",maxWidth:"350px", marginTop:220}
+	      this.searchStyles = {padding: "8px 10px", borderRadius:3, boxShadow: "rgba(0, 0, 0, 0.498039) 1px 1px 4px",margin:"220px auto 0",cursor: "auto",textAlign:"center",maxWidth:"350px"}
 	    }
 
     })

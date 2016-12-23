@@ -2,7 +2,7 @@
     .table-header {
       font-weight:700;
     }
-    .row:hover {
+    .deck-row:hover {
       background:#f2f2f2;
     }
   </style>
@@ -21,19 +21,12 @@
        <span class="table-header">Cards</span>
       </div>
       <div class="col-xs-3 text-center">
-        <a href="#" class="btn btn-sm btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+        <button class="btn btn-sm btn-success dropdown-toggle" type="button" data-toggle="dropdown">
           <span class="glyphicon glyphicon-plus"></span>
-        </a>
+        </button>
             <ul class="dropdown-menu dropdown-menu-right">
-              <li><a onclick='$(".hidden-form").slideDown("slow")' href="javascript:void(0);"><span class="glyphicon glyphicon-plus ex"></span><span class="hide-deck"> Create New Deck</span></a></li>
-<!--               <li class="divider"></li>
-              <li onclick="bulkUpload()" data-placement="bottom" data-toggle="tooltip" title="Columns: [ question | answer | deck ]">
-                <a href="javascript:void(0);"><span class="glyphicon glyphicon-open"></span> Upload CSV</a>
-              </li>
-              <li>
-                <a href=""><span class="glyphicon glyphicon-save"></span> Download CSV</a>
-              </li>
-              <li class="divider"></li> -->
+              <li><a onclick='$(".hidden-form").slideDown("slow")' href="javascript:void(0);"><i class="glyphicon glyphicon-plus ex"></i><span class="hide-deck"> Create New Deck</span></a></li>
+              <li><a onclick='document.querySelector("#file").click()' href="javascript:void(0);"><i class="glyphicon glyphicon-open-file"></i><span> Upload CSV</span></a></li>
             </ul>
       </div>
     </div>
@@ -64,7 +57,7 @@
     <% @decks.each do |deck| %> 
 
 
-    <div class="row" style="border-top: 1px solid #d5d5d5;padding:12px 8px 3px;">
+    <div class="row deck-row" style="border-top: 1px solid #d5d5d5;padding:12px 8px 3px;">
       <div class="col-xs-3">
         <span class=""><%= deck.name %></span>
       </div>
@@ -88,6 +81,12 @@
 
 
   </section>
+
+
+<%= form_tag upload_decks_path, multipart: true, method: :post, style: "display:none;", id: "upload_form" do %>
+<%= file_field_tag :file, onchange: "this.form.submit()" %>
+<% end %>
+
 
 
 <script>
