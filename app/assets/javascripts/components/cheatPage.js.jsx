@@ -5,12 +5,18 @@ var CheatPage = React.createClass({
   },
 
   newArray: function(string) {
-		var newArray = [];
+	  var newArray = [];
     var cardArray = this.props.cards
 		for(var i = 0; i < cardArray.length; i++) {
-		    if (cardArray[i].question.indexOf(string) != -1 || cardArray[i].answer.indexOf(string) != -1) {
-		        newArray.push(cardArray[i])
-		    }
+      
+      var queryWordArray = string.split(" ")
+
+      queryWordArray = queryWordArray.map(function(element){ return cardArray[i].question.indexOf(element) > -1 || cardArray[i].answer.indexOf(element) > -1 })
+
+		  if ( queryWordArray.every(function(element, index, array){ return element }) ) {
+		    newArray.push(cardArray[i])
+		  }
+
 		}
 		return newArray
   },
