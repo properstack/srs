@@ -74,6 +74,7 @@ Rails.application.configure do
   # Use a different logger for distributed setups.
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
+config.assets.digest = true
 
     config.assets.precompile += %w(cards.css cards_cheat.css decks_index.css)
 
