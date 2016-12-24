@@ -7,15 +7,14 @@ gem 'rails', '~> 5.0.0'
 group :development, :test do
   gem 'sqlite3'
   gem 'pg'
-gem 'sprockets-rails', '2.3.3'
-
 end
 
 group :production do
   gem 'pg'
-  #gem 'rails_12factor'
+  gem 'rails_12factor'
 end
 
+gem 'sprockets-rails', '2.3.3'
 
 
 # Use Puma as the app server
