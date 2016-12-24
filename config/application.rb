@@ -9,6 +9,7 @@ Bundler.require(*Rails.groups)
 
 module Srs
   class Application < Rails::Application
+
   	
   	config.app_generators.scaffold_controller = :scaffold_controller
     # Settings in config/environments/* take precedence over those specified here.
