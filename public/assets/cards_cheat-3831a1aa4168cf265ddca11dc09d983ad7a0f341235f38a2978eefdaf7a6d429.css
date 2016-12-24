@@ -1,0 +1,19 @@
+.col-sm-2 {
+	padding:0;
+}
+
+.panel {
+	margin-bottom:0;
+}
+
+/*.panel:hover {
+	width:400px;
+    position:relative;
+    z-index:2;
+	font-size:1.7em;
+}*/
+
+.panel-body {
+	 overflow-y:scroll;
+	 height:100px;
+}

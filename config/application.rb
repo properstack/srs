@@ -10,6 +10,7 @@ Bundler.require(*Rails.groups)
 module Srs
   class Application < Rails::Application
 
+    config.assets.precompile += %w(cards.css decks_index.css cards_cheat.css)
     config.serve_static_assets = true
 
   	config.app_generators.scaffold_controller = :scaffold_controller
