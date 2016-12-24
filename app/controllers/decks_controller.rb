@@ -28,6 +28,14 @@ class DecksController < ApplicationController
     end
   end
 
+  def download
+    @cards = Card.includes(:deck).where(decks: {user_id: current_user.id})
+    respond_to do |format|
+      format.csv { send_data @cards.to_csv }
+    end
+  end
+
+
   def create
     @deck = Deck.new(deck_params)
     authorize @deck

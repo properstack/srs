@@ -13,6 +13,7 @@
  *= require scaffolds
  *= require_self
  *= require cards
+ *= require decks_index
  */
 
 
@@ -23,4 +24,14 @@ html, body {
 a:hover {
 	background:white;
 	color:black;
+}
+
+.container.content {
+  min-height: calc(100vh - 70px);
+}
+
+.footer {
+  margin-top:20px;
+  background:black;
+  padding:50px;
 }

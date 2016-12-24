@@ -15,8 +15,10 @@
 	  <link rel="stylesheet" type="text/css" href="http://bigintro.pythonanywhere.com/static/cards/bootstrap.css">
 	  <link rel="stylesheet" type="text/css" href="http://bigintro.pythonanywhere.com/static/cards/styles.css">
 	  <link rel="stylesheet" type="text/css" href='http://bigintro.pythonanywhere.com/static/cards/responsive.css'>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+      <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+      <%= yield :head %>
+
   </head>
 
   <body>
@@ -34,8 +36,8 @@
 	        <div id="navbar" class="navbar-collapse collapse">
 	          <ul class="nav navbar-nav navbar-right">
 	            <% if user_signed_in? %>
-	              <li><%= link_to "About", pages_path(page:"about") %></li>
-	              <li><%= link_to "Search", cheat_path %></li>
+<!-- 	              <li><%= link_to "About", pages_path(page:"about") %></li>
+ -->	          <li><%= link_to "Search", cheat_path %></li>
 	              <li><%= link_to "My Decks", decks_path %></li>
 
 	              <li class="dropdown">
@@ -48,15 +50,15 @@
                   </li>
 
                 <% else %>
-	              <li><a href="/pages/about">About</a></li>
-	              <li><%= link_to "Log In", new_user_session_path %></li>
+<!-- 	              <li><a href="/pages/about">About</a></li>
+ -->	           <li><%= link_to "Log In", new_user_session_path %></li>
 	              <li><%= link_to "Sign Up", new_user_registration_path %></li>
 	            <% end %>
 	          </ul>
 	        </div>
 	      </div>
 	    </nav>
-    <div class="container">
+    <div class="container content">
       <% if notice %>
         <p class="notice"><%= notice %></p>
       <% end %>
@@ -83,8 +85,8 @@
 
     </div>
   
-<!--   <div id="footer"><span style="color:grey;font-size:0.8em;">SimpleSRS: Simple SRS For All</span></div>
- -->  
+  <div class="footer"><span style="color:grey;font-size:0.8em;">SimpleSRS: Simple SRS For All</span></div>
+ 
   <script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
   <%= javascript_include_tag "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js", "data-turbolinks-eval" => false %>
   <script src="/static/cards/responsive.js" type="text/javascript"></script>

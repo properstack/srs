@@ -19,7 +19,8 @@ Rails.application.routes.draw do
   patch "decks/:id" => "decks#update", as: :update_decks
   post "decks/" => "decks#create", as: nil #the name is repeated but its fine because the http verb is different, although it does not allow one to specify like this using as, it only allows one to indirectly do this, by daving the route be the same http://stackoverflow.com/questions/19189415/how-may-two-routes-with-different-http-request-types-share-the-same-name
   post "decks/upload" => "decks#upload", as: :upload_decks
-  
+  get "decks/download" => "decks#download", as: :download_csv
+
   get "pages/:page" => "pages#show", as: :pages
 
 end

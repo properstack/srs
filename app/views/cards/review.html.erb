@@ -1,58 +1,6 @@
-<style>
-#center-content {
-	max-width: 600px;
-}
-
-.question-card {
-	margin:4% auto 4%;
-	padding:3%;
-    width:100%;
-}
-
-body, html {
-    background-color: #f9f9f9;
-}
-
-.set-text {
-	font-size: 1.3em;
-}
-
-.question {
-	font-size: 1.3em;
-}
-
-#fixed-bottom {
-  width:100%;
-  text-align:center;
-}
-
-.hide-it {
-  display:none;
-}
-
-.break-words {
-  word-wrap: break-word;
-}
-
-
-body {
-  -webkit-perspective: 800px;
-}
-
-.card {
-  position: relative;
-  -webkit-animation-name: example; /* Chrome, Safari, Opera */
-  -webkit-animation-duration: 0.1s; /* Chrome, Safari, Opera */
-  line-height:140%;    
-}
-
-/* Chrome, Safari, Opera */
-@-webkit-keyframes example {
-    0% {left:-1000px; top:0px; transform:rotateY(-90deg)}
-    75% {left:-1000px; top:0px; transform:rotateY(-90deg)}
-    100% {left:0px; top:0px; transform:rotateY(0deg)}
-}
-</style>
+<% content_for :head do %>
+  <%= stylesheet_link_tag "cards_review" %>
+<% end %>
 
 
 <div class="container" id="center-content" style="">

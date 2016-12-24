@@ -14,6 +14,9 @@ group :production do
   gem 'rails_12factor'
 end
 
+
+gem 'sprockets-rails', '2.3.3'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
