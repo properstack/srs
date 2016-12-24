@@ -74,6 +74,7 @@ Rails.application.configure do
   # Use a different logger for distributed setups.
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
+  config.serve_static_assets = true
 
 
 config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
@@ -90,12 +91,6 @@ end
   
   
   config.react.variant = :production
-
-
-    #config.assets.precompile += %w(cards.css decks_index.css cards_cheat.css)
-
-
-  config.serve_static_assets = true
 
 
 end
