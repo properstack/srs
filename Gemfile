@@ -14,7 +14,7 @@ group :production do
   gem 'rails_12factor'
 end
 
-gem 'sprockets-rails', '2.3.3'
+gem 'sprockets-rails'
 
 
 # Use Puma as the app server
