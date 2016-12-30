@@ -8,8 +8,6 @@ class DecksController < ApplicationController
     redirect_to :decks, notice: "Successfully uploaded CSV"
   end
 
-
-
   def index
   	@decks = current_user.decks
     @new_deck = Deck.new({user_id: current_user.id})

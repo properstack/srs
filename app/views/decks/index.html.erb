@@ -67,7 +67,7 @@
       </div>
       <div class="col-xs-3 text-center">
           <p class="btn-group" style="margin:0;">
-          <%= link_to raw('<i style="color:black;" class="glyphicon glyphicon-eye-open"></i>'), review_cards_path, style: "color:white;border-radius:3px !important;", class: "btn btn-default btn-sm btn-edges" %>
+          <%= link_to raw('<i style="color:black;" class="glyphicon glyphicon-eye-open"></i>'), review_cards_path(deck.id), style: "color:white;border-radius:3px !important;", class: "btn btn-default btn-sm btn-edges" %>
           
           
           <%= link_to raw('<i class="glyphicon glyphicon-pencil"></i>'), edit_decks_path(deck), class:"btn btn-warning btn-sm btn-edges", style: "border-radius:3px !important;color:white;" %>

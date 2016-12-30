@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   post "cards/" => "cards#create", as: :cards
   delete "cards/:id/" => "cards#destroy", as: :cards_destroy
   patch "cards/:id/" => "cards#update", as: :update_cards
-  get "cards/review" => "cards#review", as: :review_cards
+  get "decks/:deck_id/cards/review" => "cards#review", as: :review_cards
   get "cards/cheat/" => "cards#cheat", as: :cheat
 
 

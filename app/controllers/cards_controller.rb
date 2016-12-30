@@ -24,7 +24,7 @@ class CardsController < ApplicationController
   def update
     respond_to do |format|
       if @card.update(card_params)
-        format.html { redirect_to :back }
+        format.html { redirect_to review_cards_path(@card.deck_id) }
       else
         format.html { render :back }
       end
@@ -33,7 +33,7 @@ class CardsController < ApplicationController
 
 
   def review
-    @card = Card.includes(:deck).where(decks: {user_id: current_user.id}).order(:current_ranking).first
+    @card = Card.includes(:deck).where(deck_id: review_params[:deck_id], decks: {user_id: current_user.id}).order(:current_ranking).first
     authorize @card
   end
 
@@ -55,5 +55,10 @@ class CardsController < ApplicationController
     def set_card
       @card = Card.find(params[:id])
     end
+
+    def review_params
+      params.permit(:question,:answer,:current_ranking,:deck_id)
+    end
+
 
 end

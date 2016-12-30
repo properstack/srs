@@ -16,6 +16,7 @@ end
 
 gem 'sprockets-rails'
 
+gem 'rspec-rails', ">= 2.0.0.beta"
 
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
