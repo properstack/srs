@@ -24,7 +24,7 @@ class CardsController < ApplicationController
   def update
     respond_to do |format|
       if @card.update(card_params)
-        format.html { redirect_to review_cards_path(@card.deck_id) }
+        format.html { redirect_to(:back) }
       else
         format.html { render :back }
       end
