@@ -10,6 +10,11 @@ class Deck < ApplicationRecord
     end
   end
 
+  def mastery 
+    collection = Card.includes(:deck).where(decks: {id: self.id })
+    (collection.sum("current_ranking").to_f/(collection.count*5).to_f) * 100
+  end
+
   has_many :cards
   belongs_to :user
 end

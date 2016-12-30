@@ -60,7 +60,7 @@
         <span class=""><%= deck.name %></span>
       </div>
       <div class="col-xs-3" style="padding-top:4px;">
-       <span class="">0%</span>
+       <span class=""><%= number_to_percentage deck.mastery, precision: 0 %></span>
       </div>
       <div class="col-xs-3" style="padding-top:4px;">
        <span class=""><%= deck.cards.count %></span>
