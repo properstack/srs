@@ -24,7 +24,7 @@ class CardsController < ApplicationController
   def update
     respond_to do |format|
       if @card.update(card_params)
-        format.html { redirect_to(:back) }
+        format.html { redirect_to(:back) } #not re rendering. Literally just clicking the back button
       else
         format.html { render :back }
       end
